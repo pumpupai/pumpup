@@ -1,0 +1,36 @@
+{
+  "name": "openclaw-plugin-pumpup",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Pump Up × OpenClaw plugin — request human approvals/elicitations and resume agent work on the decision.",
+  "scripts": {
+    "gen:schemas": "node scripts/gen-schemas.mjs",
+    "prebuild": "npm run gen:schemas",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "openclaw": ">=2026.6.8"
+  },
+  "dependencies": {
+    "typebox": "1.1.39"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "openclaw": "2026.6.8",
+    "ts-json-schema-generator": "2.9.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.9.0"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  }
+}

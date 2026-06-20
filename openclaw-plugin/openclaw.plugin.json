@@ -1,0 +1,29 @@
+{
+  "id": "pumpup",
+  "name": "Pump Up",
+  "description": "Request human approvals/elicitations from Pump Up and resume agent work when a decision arrives.",
+  "version": "0.1.0",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["baseUrl", "ownerSessionKey"],
+    "properties": {
+      "baseUrl": { "type": "string", "description": "Pump Up agent API base URL" },
+      "apiKey": { "description": "Pump Up agent API key — literal string or SecretRef; falls back to PUMPUP_API_KEY env" },
+      "ownerSessionKey": { "type": "string", "description": "Stable sessionKey that owns all Pump Up TaskFlows" },
+      "pollIntervalMs": { "type": "number", "description": "Decision poll interval in ms (default 10000)" },
+      "maxConcurrentResumes": { "type": "number", "description": "Max concurrent resume runs per poll tick (default 4)" }
+    }
+  },
+  "activation": { "onStartup": true },
+  "contracts": {
+    "tools": [
+      "pumpup_request_approval",
+      "pumpup_request_elicitation",
+      "pumpup_record_action",
+      "pumpup_report_exception",
+      "pumpup_add_note",
+      "pumpup_get_decision"
+    ]
+  }
+}
