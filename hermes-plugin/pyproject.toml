@@ -1,0 +1,39 @@
+[project]
+name = "pumpup-hermes-plugin"
+version = "0.1.0"
+description = "Pump Up × Hermes plugin — request human approvals/elicitations and resume agent work on the decision."
+readme = "README.md"
+requires-python = ">=3.10"
+# The Pump Up SDK provides `pumpup` (pydantic + httpx transitively); we use both directly too — httpx for
+# the resume call to the local Hermes API server, pydantic to validate + serialise the breadcrumb store,
+# pydantic-settings to load + validate env config (fail-fast on a missing/invalid value).
+dependencies = [
+    "pumpup-sdk",
+    "httpx>=0.27",
+    "pydantic>=2",
+    "pydantic-settings>=2",
+]
+
+# The SDK is consumed as a git dependency on the SDK repo's `dev` branch (Fern-generated from the
+# current spec via `mise run fern:sdk:dev`) until a tagged `pumpup-sdk` release on PyPI, at which
+# point this source pin is dropped. In the OSS mirror this resolves once the package is public.
+[tool.uv.sources]
+pumpup-sdk = { git = "https://github.com/pumpupai/pumpup-sdk-python.git", branch = "dev" }
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.6",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120

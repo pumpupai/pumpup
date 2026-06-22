@@ -1,0 +1,442 @@
+{
+  "field": {
+    "anyOf": [
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "max": {
+            "type": "string"
+          },
+          "min": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "DateField"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "max": {
+            "type": "string"
+          },
+          "min": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "DateTime"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "Multiselect"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "options",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "integerOnly": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          },
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "Number"
+          }
+        },
+        "required": [
+          "id",
+          "integerOnly",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "Select"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "options",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "step": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "const": "Slider"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "max",
+          "min",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "Switch"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "EMAIL",
+              "PHONE",
+              "URL"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "maxLength": {
+            "type": "number"
+          },
+          "minLength": {
+            "type": "number"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "Text"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "maxLength": {
+            "type": "number"
+          },
+          "minLength": {
+            "type": "number"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "TextArea"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "max": {
+            "type": "string"
+          },
+          "min": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "type": {
+            "type": "string",
+            "const": "Time"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "required",
+          "type"
+        ],
+        "additionalProperties": false
+      }
+    ],
+    "definitions": {}
+  },
+  "approvalRecommendation": {
+    "type": "object",
+    "properties": {
+      "confidence": {
+        "type": "number"
+      },
+      "outcome": {
+        "type": "object",
+        "properties": {
+          "note": {
+            "type": "string"
+          },
+          "reasonCode": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "APPROVE",
+              "REJECT",
+              "EDIT_AND_APPROVE",
+              "ESCALATE",
+              "REQUEST_MORE_INFO"
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "rationale": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "outcome"
+    ],
+    "additionalProperties": false,
+    "definitions": {}
+  },
+  "fieldBid": {
+    "type": "object",
+    "properties": {
+      "confidence": {
+        "type": "number"
+      },
+      "fieldId": {
+        "type": "string"
+      },
+      "rationale": {
+        "type": "string"
+      },
+      "value": {}
+    },
+    "required": [
+      "fieldId"
+    ],
+    "additionalProperties": false,
+    "definitions": {}
+  },
+  "metadataPatch": {
+    "type": "object",
+    "properties": {
+      "set": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "setOnce": {
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "unset": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "additionalProperties": false,
+    "definitions": {}
+  }
+}

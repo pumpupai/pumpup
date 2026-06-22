@@ -258,20 +258,19 @@ function buildGetDecisionTool(client: PumpUpClient): AnyAgentTool {
   });
 }
 
-/// Per-process cache of the auto-created task id per (sessionId, project). The backend dedups creates
-/// on the deterministic idempotency key, so a cache miss after a restart re-resolves to the same task —
-/// the cache only spares the repeat round-trip, it isn't the source of truth.
+/// Per-process cache of the auto-created task id per `sessionId` — keyed exactly like the idempotency key
+/// (one task per session), so a cache miss after a restart re-resolves to the same task; the cache only
+/// spares the repeat round-trip, it isn't the source of truth.
 const sessionTasks = new Map<string, string>();
 
-/// Find-or-create this session's one durable task (per project), cached in-process. Keyed by `sessionId`
-/// so a roll/`/reset` starts a fresh task — correct while rehydration is deferred (a decision must land in
-/// the session that opened it). The plugin owns the task lifecycle so the agent never handles task ids.
+/// Find-or-create this session's one durable task, cached in-process. Keyed by `sessionId` so a roll/`/reset`
+/// starts a fresh task — correct while rehydration is deferred (a decision must land in the session that opened
+/// it, in the project of first use). The plugin owns the task lifecycle so the agent never handles task ids.
 async function resolveTaskId(client: PumpUpClient, projectName: string, ctx: OpenClawPluginToolContext): Promise<string> {
   if (!ctx.sessionId) {
     throw new Error("pumpup: no session to create a task for");
   }
-  const cacheKey = `${ctx.sessionId}::${projectName}`;
-  const cached = sessionTasks.get(cacheKey);
+  const cached = sessionTasks.get(ctx.sessionId);
   if (cached) {
     return cached;
   }
@@ -281,7 +280,7 @@ async function resolveTaskId(client: PumpUpClient, projectName: string, ctx: Ope
     name: `OpenClaw session ${ctx.sessionKey ?? ctx.sessionId}`,
     externalId: ctx.sessionId,
   });
-  sessionTasks.set(cacheKey, task.id);
+  sessionTasks.set(ctx.sessionId, task.id);
   return task.id;
 }
 
