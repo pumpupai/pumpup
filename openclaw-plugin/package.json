@@ -1,13 +1,13 @@
 {
-  "name": "openclaw-plugin-pumpup",
-  "version": "0.1.0",
+  "name": "@pumpupai/openclaw-plugin",
+  "version": "0.0.2",
   "type": "module",
   "private": true,
   "description": "Pump Up × OpenClaw plugin — request human approvals/elicitations and resume agent work on the decision.",
   "scripts": {
     "gen:schemas": "node scripts/gen-schemas.mjs",
     "prebuild": "npm run gen:schemas",
-    "build": "tsup",
+    "build": "tsc",
     "typecheck": "tsc --noEmit"
   },
   "files": [
@@ -19,18 +19,26 @@
     "openclaw": ">=2026.6.8"
   },
   "dependencies": {
+    "@pumpupai/pumpup-sdk": "github:pumpupai/pumpup-sdk-typescript#dev",
     "typebox": "1.1.39"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "openclaw": "2026.6.8",
     "ts-json-schema-generator": "2.9.0",
-    "tsup": "^8.3.0",
     "typescript": "^5.9.0"
   },
   "openclaw": {
     "extensions": [
       "./dist/index.js"
-    ]
+    ],
+    "compat": {
+      "pluginApi": ">=2026.6.8",
+      "minGatewayVersion": "2026.6.8"
+    },
+    "build": {
+      "openclawVersion": "2026.6.8",
+      "pluginSdkVersion": "2026.6.8"
+    }
   }
 }

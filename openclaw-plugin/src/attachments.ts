@@ -1,7 +1,7 @@
 import { realpath } from "node:fs/promises";
 import { basename, resolve, sep } from "node:path";
 
-import type { PumpUp, PumpUpClient } from "../../../sdks/typescript/index.js";
+import type { PumpUp, PumpUpClient } from "@pumpupai/pumpup-sdk";
 
 /// One agent-supplied attachment: a workspace-relative file path + display label.
 export type AttachmentInput = { path: string; label: string };

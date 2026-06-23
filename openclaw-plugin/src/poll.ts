@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { runTasksWithConcurrency } from "openclaw/plugin-sdk/concurrency-runtime";
 import type { OpenClawPluginApi } from "openclaw/plugin-sdk/plugin-entry";
 
-import type { PumpUp, PumpUpClient } from "../../../sdks/typescript/index.js";
+import type { PumpUp, PumpUpClient } from "@pumpupai/pumpup-sdk";
 import type { PumpUpPluginConfig } from "./config.js";
 import { type PumpUpFlowState, type PumpUpRequestType, parseFlowState } from "./state.js";
 

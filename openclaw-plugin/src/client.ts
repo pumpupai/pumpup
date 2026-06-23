@@ -1,7 +1,7 @@
 import type { OpenClawConfig } from "openclaw/plugin-sdk/plugin-entry";
 import { coerceSecretRef, resolveSecretRefValues } from "openclaw/plugin-sdk/secret-ref-runtime";
 
-import { PumpUpClient } from "../../../sdks/typescript/index.js";
+import { PumpUpClient } from "@pumpupai/pumpup-sdk";
 import type { PumpUpPluginConfig } from "./config.js";
 
 /// Build the Pump Up SDK client. `apiKey` is a lazy async Supplier so SecretRef resolution

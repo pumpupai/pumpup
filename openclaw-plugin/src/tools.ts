@@ -4,7 +4,7 @@ import { jsonResult } from "openclaw/plugin-sdk/core";
 import type { AnyAgentTool, OpenClawPluginApi, OpenClawPluginToolContext } from "openclaw/plugin-sdk/plugin-entry";
 import { type Static, type TSchema, Type } from "typebox";
 
-import type { PumpUp, PumpUpClient } from "../../../sdks/typescript/index.js";
+import type { PumpUp, PumpUpClient } from "@pumpupai/pumpup-sdk";
 import { type AttachmentInput, uploadAttachments } from "./attachments.js";
 import type { PumpUpPluginConfig } from "./config.js";
 import { toToolFailure } from "./errors.js";

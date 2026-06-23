@@ -38,12 +38,28 @@ export API_SERVER_KEY=$(openssl rand -hex 32)   # required; the resume call auth
 
 ## Install
 
-Copy or symlink this directory into `~/.hermes/plugins/pumpup/`, then enable it (user-installed
-plugins are gated by `plugins.enabled`) and enable the `pumpup` gateway platform.
+**From PyPI** (recommended):
 
-The Pump Up SDK is a git dependency on the SDK repo's `dev` branch (`pyproject.toml` →
-`[tool.uv.sources]`; `mise run fern:sdk:dev` regenerates it from the current spec). `uv sync`
-installs it; `import pumpup` resolves natively. Swaps to the published `pumpup-sdk` on PyPI later.
+```sh
+pip install pumpup-hermes-plugin
+hermes plugins enable pumpup
+```
+
+Hermes auto-discovers it via the `hermes_agent.plugins` entry point, and pip pulls its deps (incl.
+`pumpup-sdk`). Then enable the `pumpup` gateway platform.
+
+**From the OSS repo** (no PyPI):
+
+```sh
+hermes plugins install pumpupai/pumpup/hermes-plugin --enable
+```
+
+`hermes plugins install` accepts a subdirectory, so this works even though the plugin lives under
+`hermes-plugin/` in the mirror.
+
+**Local development:** `uv sync` — the Pump Up SDK resolves from the SDK repo's `dev` branch via
+`[tool.uv.sources]` (`mise run fern:sdk:dev` regenerates it); a built wheel instead depends on
+`pumpup-sdk` from PyPI, as uv strips the dev source. Then enable the `pumpup` gateway platform.
 
 ## Config (env)
 

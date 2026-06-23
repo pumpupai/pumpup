@@ -1,7 +1,7 @@
 import { failedTextResult } from "openclaw/plugin-sdk/agent-runtime";
 import { formatErrorMessage } from "openclaw/plugin-sdk/error-runtime";
 
-import { PumpUpError } from "../../../sdks/typescript/index.js";
+import { PumpUpError } from "@pumpupai/pumpup-sdk";
 
 /// Structured failure surfaced on a tool result so the agent (and our logs) branch on the outcome
 /// instead of seeing an opaque thrown error. `status: "failed"` is the runtime's failed-tool marker.

@@ -7,13 +7,14 @@ park the wait as a TaskFlow, and resume agent work when the decision arrives. De
 ## Build
 
 ```
-npm install
-npm run build      # tsup → dist/index.js (bundles the local Pump Up SDK; openclaw stays external)
+npm install        # resolves pumpup-sdk (git dep on pumpup-sdk-typescript#dev, built on install)
+npm run build      # tsc → dist/
 npm run typecheck  # tsc --noEmit
 ```
 
-The plugin bundles the local Fern SDK source at `../../sdks/typescript` (see this repo's
-`tech-docs/current/sdks.md`). Swapping to the published `pumpup-sdk` later is an import change.
+The plugin depends on the Pump Up TypeScript SDK as a git dependency on the SDK repo's `dev` branch
+(like the Hermes plugin); `npm install` builds it on install via the package's `prepare` script. Swaps
+to the published `pumpup-sdk` on npm later (see this repo's `tech-docs/current/sdks.md`).
 
 ## Install (dev gateway)
 
