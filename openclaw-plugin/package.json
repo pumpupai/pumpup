@@ -1,6 +1,6 @@
 {
   "name": "@pumpupai/openclaw-plugin",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "private": true,
   "description": "Pump Up × OpenClaw plugin — request human approvals/elicitations and resume agent work on the decision.",
