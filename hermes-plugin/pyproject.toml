@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pumpup-hermes-plugin"
-version = "0.0.3"
+version = "0.0.4"
 description = "Pump Up × Hermes plugin — request human approvals/elicitations and resume agent work on the decision."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,7 +12,7 @@ requires-python = ">=3.10"
 # the resume call to the local Hermes API server, pydantic to validate + serialise the breadcrumb store,
 # pydantic-settings to load + validate env config (fail-fast on a missing/invalid value).
 dependencies = [
-    "pumpup-sdk==0.0.3",
+    "pumpup-sdk==0.0.4",
     "httpx>=0.27",
     "pydantic>=2",
     "pydantic-settings>=2",
