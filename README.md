@@ -4,7 +4,7 @@
 
 **The operations workspace for AI-augmented teams.**
 
-[![PyPI version](https://img.shields.io/pypi/v/pumpup-sdk?logo=pypi&logoColor=white&label=pip%20install%20pumpup-sdk)](https://pypi.org/project/pumpup-sdk/) [![npm version](https://img.shields.io/npm/v/pumpup-sdk?logo=npm&logoColor=white&label=npm%20install%20pumpup-sdk)](https://www.npmjs.com/package/pumpup-sdk)<br/>[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![Python versions](https://img.shields.io/pypi/pyversions/pumpup-sdk?logo=python&logoColor=white)](https://pypi.org/project/pumpup-sdk/) [![GitHub stars](https://img.shields.io/github/stars/pumpupai/pumpup?logo=github&logoColor=white&label=stars)](https://github.com/pumpupai/pumpup/stargazers)
+[![PyPI version](https://img.shields.io/pypi/v/pumpup-sdk?logo=pypi&logoColor=white&label=pip%20install%20pumpup-sdk)](https://pypi.org/project/pumpup-sdk/) [![npm version](https://img.shields.io/npm/v/@pumpupai/pumpup-sdk?logo=npm&logoColor=white&label=npm%20install%20%40pumpupai%2Fpumpup-sdk)](https://www.npmjs.com/package/@pumpupai/pumpup-sdk)<br/>[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![Python versions](https://img.shields.io/pypi/pyversions/pumpup-sdk?logo=python&logoColor=white)](https://pypi.org/project/pumpup-sdk/) [![GitHub stars](https://img.shields.io/github/stars/pumpupai/pumpup?logo=github&logoColor=white&label=stars)](https://github.com/pumpupai/pumpup/stargazers)
 
 [Docs](https://docs.pumpup.com) · [Website](https://pumpup.com) · [Discussions](https://github.com/pumpupai/pumpup/discussions) · [Issues](https://github.com/pumpupai/pumpup/issues)
 
@@ -23,7 +23,7 @@ We're **agent-agnostic** — run agents from any vendor (or your own) and Pump U
 This is the public home for everything a developer wires up to Pump Up:
 
 - **SDKs** — the `pumpup-sdk` clients for **Python** and **TypeScript**.
-- **Integrations** — drop-in plugins for the agent frameworks developers actually build on ([`openclaw-plugin`](./openclaw-plugin) today; more driven by where you are).
+- **Integrations** — drop-in plugins for the agent frameworks developers actually build on ([`openclaw-plugin`](./openclaw-plugin) and [`hermes-plugin`](./hermes-plugin) today; more driven by where you are).
 - **Docs** *(soon)* — guides and the full API reference at [docs.pumpup.com](https://docs.pumpup.com).
 
 > [!NOTE]
@@ -34,8 +34,8 @@ This is the public home for everything a developer wires up to Pump Up:
 Install the SDK for your language:
 
 ```bash
-pip install pumpup-sdk          # Python
-npm install pumpup-sdk          # TypeScript
+pip install pumpup-sdk             # Python
+npm install @pumpupai/pumpup-sdk   # TypeScript
 ```
 
 Then drop a human in the loop in about 20 lines — a single call parks the work, routes it to the right person, and hands you back the decision:
@@ -58,6 +58,7 @@ The human reviews it in a fast, keyboard-driven item view; your agent gets the a
 Already building on a framework? Skip the wiring:
 
 - **[OpenClaw](./openclaw-plugin)** — request approvals/elicitations and resume your agent when the decision lands.
+- **[Hermes](./hermes-plugin)** — request approvals/elicitations and act on the decision back in the original conversation, hours later, with no inbound network access.
 
 More integrations land here as siblings — open a [Discussion](https://github.com/pumpupai/pumpup/discussions) to tell us which framework you want next.
 

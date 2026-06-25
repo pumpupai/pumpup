@@ -16,10 +16,32 @@ The plugin depends on the Pump Up TypeScript SDK as a git dependency on the SDK 
 (like the Hermes plugin); `npm install` builds it on install via the package's `prepare` script. Swaps
 to the published `pumpup-sdk` on npm later (see this repo's `tech-docs/current/sdks.md`).
 
-## Install (dev gateway)
+## Install
 
+Pick a source, then enable the plugin and surface its tools.
+
+**From ClawHub** (recommended):
+
+```sh
+openclaw plugins install clawhub:@pumpupai/openclaw-plugin
 ```
-openclaw plugins install <abs path to this dir>
+
+**From npm:**
+
+```sh
+openclaw plugins install npm:@pumpupai/openclaw-plugin
+```
+
+**Local development** — install this directory by absolute path; `-l` links it without copying (run the Build steps first so `dist/` exists):
+
+```sh
+openclaw plugins install -l /abs/path/to/openclaw-plugin
+```
+
+Then enable it. The default `coding` profile hides plugin tools, so also allow the `pumpup_*` tools (`tools.alsoAllow` or `profile: "full"`):
+
+```sh
+openclaw plugins enable pumpup
 ```
 
 ## Config (`plugins.entries.pumpup.config`)
