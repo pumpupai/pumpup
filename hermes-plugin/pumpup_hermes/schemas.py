@@ -1,4 +1,4 @@
-"""Agent-facing JSON schemas for the six pumpup_* tools.
+"""Agent-facing JSON schemas for the seven pumpup_* tools.
 
 The contract-typed parameters (elicitation `fields`, recommendations, `metadataPatch`) are loaded
 from a committed, generated artifact — `generated/contract_schemas.json`, emitted by the shared
@@ -52,7 +52,8 @@ def _tool(name: str, description: str, properties: dict, required: list) -> dict
 
 REQUEST_APPROVAL = _tool(
     "pumpup_request_approval",
-    "Request human sign-off in Pump Up. Returns pending immediately; the decision later resumes this session.",
+    "Request human sign-off in Pump Up. Returns pending immediately, then end your turn — the decision later "
+    "resumes this session (don't poll). New to Pump Up? Call pumpup_guide first.",
     {
         "projectName": _PROJECT_NAME,
         "summary": {"type": "string", "description": "What needs approval"},
@@ -65,7 +66,8 @@ REQUEST_APPROVAL = _tool(
 
 REQUEST_ELICITATION = _tool(
     "pumpup_request_elicitation",
-    "Ask a human for structured input in Pump Up. Returns pending immediately; the answer later resumes this session.",
+    "Ask a human for structured input in Pump Up. Returns pending immediately, then end your turn — the answer "
+    "later resumes this session (don't poll). New to Pump Up? Call pumpup_guide first.",
     {
         "projectName": _PROJECT_NAME,
         "summary": {"type": "string", "description": "What input is needed"},
@@ -124,4 +126,11 @@ GET_DECISION = _tool(
         "type": {"type": "string", "enum": ["approval", "elicitation"], "description": "Which kind of request"},
     },
     ["requestId", "type"],
+)
+
+GUIDE = _tool(
+    "pumpup_guide",
+    "How and when to use the Pump Up tools — read this before your first approval/elicitation.",
+    {},
+    [],
 )

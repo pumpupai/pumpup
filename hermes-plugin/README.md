@@ -82,6 +82,7 @@ The `pumpup` tools and platform self-enable when `PUMPUP_BASE_URL` + `PUMPUP_API
 | `pumpup_report_exception` | Report an agent error/exception |
 | `pumpup_add_note` | Add a freeform note |
 | `pumpup_get_decision` | One-shot, non-blocking check whether a request was decided |
+| `pumpup_guide` | Read how and when to use the Pump Up tools (also a `pumpup:guide` skill) |
 
 ## Develop
 

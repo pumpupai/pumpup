@@ -6,12 +6,14 @@
   "description": "Pump Up × OpenClaw plugin — request human approvals/elicitations and resume agent work on the decision.",
   "scripts": {
     "gen:schemas": "node scripts/gen-schemas.mjs",
-    "prebuild": "npm run gen:schemas",
+    "gen:guide": "node scripts/gen-guide.mjs",
+    "prebuild": "npm run gen:schemas && npm run gen:guide",
     "build": "tsc",
     "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist",
+    "skills",
     "openclaw.plugin.json",
     "README.md"
   ],

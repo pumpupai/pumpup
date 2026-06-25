@@ -100,3 +100,25 @@ async def test_tool_handler_maps_sdk_error_to_structured_failure():
 
     out = json.loads(await tools._tool_handler("decide", boom)({}, session_id="sA"))
     assert out["status"] == "failed" and out["http_status"] == 409
+
+
+async def test_guide_returns_embedded_markdown():
+    out = json.loads(await tools._guide({}, None))
+    assert out["guide"].startswith("# Using Pump Up")
+
+
+def test_register_guide_registers_tool_and_a_skill_with_a_real_file(monkeypatch):
+    monkeypatch.setattr(tools, "is_configured", lambda: True)
+    ctx = MagicMock()
+    tools.register_guide(ctx)
+    tool_names = [c.kwargs["name"] for c in ctx.register_tool.call_args_list]
+    assert "pumpup_guide" in tool_names
+    name, path = ctx.register_skill.call_args.args[:2]
+    assert name == "guide" and path.exists()  # register_skill raises at runtime if the SKILL.md is missing
+
+
+def test_register_guide_skips_skill_when_unconfigured(monkeypatch):
+    monkeypatch.setattr(tools, "is_configured", lambda: False)
+    ctx = MagicMock()
+    tools.register_guide(ctx)
+    ctx.register_skill.assert_not_called()

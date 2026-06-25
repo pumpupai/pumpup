@@ -8,6 +8,7 @@ import type { PumpUp, PumpUpClient } from "@pumpupai/pumpup-sdk";
 import { type AttachmentInput, uploadAttachments } from "./attachments.js";
 import type { PumpUpPluginConfig } from "./config.js";
 import { toToolFailure } from "./errors.js";
+import { agentGuide } from "./generated/agent-guide.js";
 import {
   approvalRecommendationSchema,
   fieldBidSchema,
@@ -109,6 +110,22 @@ export function registerCaptureTools(api: OpenClawPluginApi, client: PumpUpClien
   api.registerTool(() => buildGetDecisionTool(client));
 }
 
+/// Register the read-only guide tool — the agent's pull path to the holistic Pump Up usage model.
+export function registerGuideTool(api: OpenClawPluginApi): void {
+  api.registerTool(() => buildGuideTool());
+}
+
+/// Return the Pump Up usage guide (how/when to use the tools, the pending/resume model). Static, no I/O.
+function buildGuideTool(): AnyAgentTool {
+  return defineTool({
+    name: "pumpup_guide",
+    label: "Pump Up guide",
+    description: "How and when to use the Pump Up tools — read this before your first approval/elicitation.",
+    parameters: Type.Object({}),
+    execute: async () => jsonResult({ guide: agentGuide }),
+  });
+}
+
 /// Approval request tool: POST → park flow as waiting → return the pending handle.
 function buildApprovalTool(
   api: OpenClawPluginApi,
@@ -119,7 +136,9 @@ function buildApprovalTool(
   return defineTool({
     name: "pumpup_request_approval",
     label: "Request approval",
-    description: "Request human sign-off in Pump Up. Returns pending; the decision later resumes this session.",
+    description:
+      "Request human sign-off in Pump Up. Returns pending, then end your turn — the decision later resumes "
+      + "this session (don't poll). New to Pump Up? Call pumpup_guide first.",
     parameters: ApprovalParams,
     execute: async (params) => {
       const taskId = await resolveTaskId(client, params.projectName, ctx);
@@ -149,7 +168,9 @@ function buildElicitationTool(
   return defineTool({
     name: "pumpup_request_elicitation",
     label: "Request elicitation",
-    description: "Ask a human for structured input in Pump Up. Returns pending; the answer later resumes this session.",
+    description:
+      "Ask a human for structured input in Pump Up. Returns pending, then end your turn — the answer later "
+      + "resumes this session (don't poll). New to Pump Up? Call pumpup_guide first.",
     parameters: ElicitationParams,
     execute: async (params) => {
       const taskId = await resolveTaskId(client, params.projectName, ctx);

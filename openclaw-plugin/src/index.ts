@@ -4,7 +4,7 @@ import { registerOperatorCli } from "./cli.js";
 import { buildClient } from "./client.js";
 import { readConfig } from "./config.js";
 import { PumpUpPollService } from "./poll.js";
-import { registerCaptureTools, registerRequestTools } from "./tools.js";
+import { registerCaptureTools, registerGuideTool, registerRequestTools } from "./tools.js";
 
 /// Pump Up × OpenClaw plugin entry. Wires config + the SDK client + request tools + the
 /// poll/resume service that drives decided requests back into their live agent session.
@@ -17,6 +17,7 @@ export default definePluginEntry({
     const client = buildClient(cfg, api.config);
     registerRequestTools(api, cfg, client);
     registerCaptureTools(api, client);
+    registerGuideTool(api);
     registerOperatorCli(api, cfg);
     const poll = new PumpUpPollService(api, cfg, client);
     api.registerService({ id: "pumpup-poll", start: () => poll.start(), stop: () => poll.stop() });

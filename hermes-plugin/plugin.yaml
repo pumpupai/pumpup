@@ -4,7 +4,7 @@ kind: standalone
 version: 0.1.0
 description: >
   Request human approvals/elicitations from Pump Up and resume the agent's original
-  conversation when a human decides. Provides six pumpup_* tools plus a background
+  conversation when a human decides. Provides seven pumpup_* tools plus a background
   "pumpup" gateway platform that polls Pump Up for decisions and resumes the origin
   session via the API server. Requires an always-on gateway with the API server enabled.
 author: Applet Labs Inc. (dba Pump Up)
@@ -15,6 +15,7 @@ provides_tools:
   - pumpup_report_exception
   - pumpup_add_note
   - pumpup_get_decision
+  - pumpup_guide
 requires_env:
   - name: PUMPUP_BASE_URL
     description: "Pump Up agent API base URL"

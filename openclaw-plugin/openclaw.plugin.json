@@ -2,7 +2,7 @@
   "id": "pumpup",
   "name": "Pump Up",
   "description": "Request human approvals/elicitations from Pump Up and resume agent work when a decision arrives.",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -16,6 +16,7 @@
     }
   },
   "activation": { "onStartup": true },
+  "skills": ["./skills"],
   "contracts": {
     "tools": [
       "pumpup_request_approval",
@@ -23,7 +24,8 @@
       "pumpup_record_action",
       "pumpup_report_exception",
       "pumpup_add_note",
-      "pumpup_get_decision"
+      "pumpup_get_decision",
+      "pumpup_guide"
     ]
   }
 }

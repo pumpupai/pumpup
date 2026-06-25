@@ -9,6 +9,7 @@ import json
 import threading
 import uuid
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Awaitable, Callable, Optional
 
 from . import schemas
@@ -30,6 +31,11 @@ _RECOMMENDATION = TypeAdapter(Optional[ApprovalRecommendation])
 _FIELD_BIDS = TypeAdapter(Optional[list[FieldBid]])
 _FIELDS = TypeAdapter(list[Field])
 _METADATA_PATCH = TypeAdapter(Optional[MetadataPatchDto])
+
+# The agent guide — embedded markdown (generated artifact) returned by pumpup_guide, plus the SKILL.md
+# backing the pull-loadable `pumpup:guide` skill.
+_GUIDE_TEXT = (Path(__file__).parent / "generated" / "agent_guide.md").read_text(encoding="utf-8")
+_GUIDE_SKILL = Path(__file__).parent / "skills" / "guide" / "SKILL.md"
 
 # Per-process cache of the auto-created task id per session_id — keyed exactly like the idempotency key
 # (one task per session), so a cache miss after a restart re-resolves the same task; the cache only spares
@@ -125,6 +131,11 @@ async def _get_decision(args: dict, _session_id: Optional[str]) -> str:
     if result is None:
         return json.dumps({"status": "pending"})
     return json.dumps({"status": "decided", "decision": result.model_dump(mode="json", by_alias=True)})
+
+
+async def _guide(args: dict, _session_id: Optional[str]) -> str:
+    """Return the Pump Up usage guide (how/when to use the tools, the pending/resume model). Static text."""
+    return json.dumps({"guide": _GUIDE_TEXT})
 
 
 async def _attach_to_task(
@@ -236,3 +247,10 @@ def register_capture_tools(ctx: Any) -> None:
     _register(ctx, schemas.REPORT_EXCEPTION, _tool_handler("report_exception", _report_exception))
     _register(ctx, schemas.ADD_NOTE, _tool_handler("add_note", _add_note))
     _register(ctx, schemas.GET_DECISION, _tool_handler("get_decision", _get_decision))
+
+
+def register_guide(ctx: Any) -> None:
+    """Register the pumpup_guide tool and, when configured, the pull-loadable `pumpup:guide` skill."""
+    _register(ctx, schemas.GUIDE, _tool_handler("guide", _guide))
+    if is_configured():
+        ctx.register_skill("guide", _GUIDE_SKILL, description=schemas.GUIDE["description"])
