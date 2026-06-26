@@ -2,7 +2,7 @@
   "id": "pumpup",
   "name": "Pump Up",
   "description": "Request human approvals/elicitations from Pump Up and resume agent work when a decision arrives.",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
