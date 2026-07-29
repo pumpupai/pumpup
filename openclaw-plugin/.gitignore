@@ -1,5 +1,0 @@
-# openclaw local install + plugin deps
-node_modules/
-
-# plugin build output (tsup / tsc)
-dist/

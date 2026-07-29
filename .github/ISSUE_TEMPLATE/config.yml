@@ -5,7 +5,7 @@ contact_links:
     about: Questions, ideas, and general conversation — start here.
   - name: 📖 Documentation
     url: https://docs.pumpup.com
-    about: Guides and the full API reference.
+    about: Guides and how-tos.
   - name: 🔒 Report a security issue
     url: https://github.com/pumpupai/pumpup/security/advisories/new
     about: Please report vulnerabilities privately, not as a public issue.

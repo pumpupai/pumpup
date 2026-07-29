@@ -1,6 +1,6 @@
 ---
 name: 💡 Feature request
-about: Suggest an idea or improvement for an SDK, integration, or the docs
+about: Suggest an idea or improvement for Pump Up
 title: ""
 labels: enhancement
 assignees: ""
@@ -15,9 +15,7 @@ A clear description of the feature or improvement.
 What are you trying to do that's hard or impossible today?
 
 **How would you use it?**
-A sketch of the API or workflow you'd want, if you have one in mind.
+A sketch of the workflow you'd want, if you have one in mind.
 
 **Anything else?**
 Alternatives you've considered, links, prior art — all welcome.
-
-> Looking for a **new framework integration**? Use the “🔌 Integration request” template instead.
