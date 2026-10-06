@@ -1,0 +1,14 @@
+{
+  "name": "pumpup",
+  "displayName": "Pump Up",
+  "description": "Design, run and supervise business-process agents on Pump Up: map a process into a playbook, start runs, answer the approvals and questions agents send you, and improve playbooks from their run history.",
+  "author": {
+    "name": "Pump Up",
+    "url": "https://pumpup.com"
+  },
+  "homepage": "https://pumpup.com",
+  "repository": "https://github.com/pumpupai/pumpup",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://pumpup.com/privacy-policy",
+  "keywords": ["agents", "automation", "workflow", "approvals", "human-in-the-loop", "operations"]
+}
