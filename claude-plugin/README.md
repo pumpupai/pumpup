@@ -13,15 +13,15 @@ Pump Up runs agents in the cloud that automate repeatable business processes. Ea
 
 ## What it connects to
 
-The plugin adds one remote MCP server: `https://app.pumpup.com/mcp`. You sign in with your Pump Up account through OAuth the first time Claude uses it; the plugin stores no credentials.
+The plugin adds one remote MCP server: `https://app.pumpup.com/mcp`. You sign in with your Pump Up account through OAuth when you connect it; the plugin stores no credentials.
 
 Every action goes to Pump Up as you, in your organization, and is limited by your role there. Claude sends Pump Up only what a tool call needs — playbook designs, run details and your answers to requests. The skills hold instructions only: they run no scripts, install nothing, and contact no other service.
 
-The skills fetch their detailed method from Pump Up's server when they run, so the method stays current without a plugin update.
+The pumpup-create-playbook, pumpup-playbook-overview and pumpup-review-run skills fetch their detailed method from Pump Up's server when they run, so that method stays current without a plugin update.
 
 ## Getting started
 
-You need a Pump Up account: sign up at [pumpup.com](https://pumpup.com). Then ask Claude to "create a Pump Up playbook" or "show my Pump Up inbox".
+You need a Pump Up account: sign up at [pumpup.com](https://pumpup.com). Then open Customize > Plugins > Pump Up > Connectors and connect Pump Up. Ask Claude to "create a Pump Up playbook" or "show my Pump Up inbox".
 
 ## Support
 

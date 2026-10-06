@@ -1,8 +1,10 @@
 ---
-name: inbox-batch
-description: Use when the user wants to work through all the waiting runs of a Pump Up playbook in one go — answering every approval and information request under rules they set once, in parallel where possible. For a long local session; for one run at a time use the inbox skill.
+name: pumpup-inbox-batch
+description: Use when the user wants to work through all the waiting runs of a Pump Up playbook in one go — answering every approval and information request under rules they set once, in parallel where possible. For a long local session; for one run at a time use the pumpup-inbox skill.
 argument-hint: <playbook name>
 ---
+
+Before anything else, check that the Pump Up tools (pumpup_*) are available. If they are not, stop and tell the user to connect Pump Up: open Customize > Plugins > Pump Up > Connectors, select Connect, sign in with their Pump Up account, then ask again. If they have no account, they can sign up at https://pumpup.com.
 
 # Work a Pump Up playbook's inbox in a batch
 
@@ -20,7 +22,7 @@ recorded in Pump Up under the user's name, resumes the hosted agent, and cannot 
    valid answer.
 3. Confirm in plain words that the user authorizes you to answer requests inside these rules without asking
    each time. This standing confirmation is what lets you call pumpup_request_approve and
-   pumpup_request_provide on their behalf. Without it, stop and use the inbox skill instead.
+   pumpup_request_provide on their behalf. Without it, stop and use the pumpup-inbox skill instead.
 4. Create `pumpup-inbox-batch-<playbook>-<date>.md` in the working directory and write the rules into it.
 
 ## 2. Work the runs
@@ -38,10 +40,11 @@ recorded in Pump Up under the user's name, resumes the hosted agent, and cannot 
    - returns, per request: what was asked, the answer given or "left for you", and one line of reasoning.
 4. Append each run's result to the log as it comes back: run name and link, then its requests and answers.
 5. When the batch is done, call pumpup_run_list again: an answered run can come back with a new request, and new
-   runs arrive. Repeat until no waiting run has a request you can answer, or the user stops you.
+   runs arrive. Skip any run whose open requests are all already logged as "left for you", and work the rest.
+   Stop when no run is left to work, or the user stops you.
 
 ## 3. Hand back
 
 Summarize: runs worked, answers given by kind, and the requests left for the user with their inbox links
 (https://app.pumpup.com/inbox?session={runId}). Point out repeated patterns worth a playbook change, and offer the
-review-run skill for them.
+pumpup-review-run skill for them.
