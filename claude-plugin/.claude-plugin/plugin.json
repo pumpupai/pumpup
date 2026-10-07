@@ -10,5 +10,8 @@
   "repository": "https://github.com/pumpupai/pumpup",
   "license": "MIT",
   "privacyPolicyUrl": "https://pumpup.com/privacy-policy",
+  "termsOfServiceUrl": "https://pumpup.com/tos.pdf",
+  "documentationUrl": "https://docs.pumpup.com",
+  "supportUrl": "https://docs.pumpup.com",
   "keywords": ["agents", "automation", "workflow", "approvals", "human-in-the-loop", "operations"]
 }
