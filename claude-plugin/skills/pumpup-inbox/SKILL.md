@@ -3,7 +3,7 @@ name: pumpup-inbox
 description: Use when the user wants to see or work their Pump Up inbox — the runs waiting on a person — or answer an approval or information request from a Pump Up agent.
 ---
 
-Before anything else, check that the Pump Up tools (pumpup_*) are available. If they are not, stop and tell the user to connect Pump Up: open Customize > Plugins > Pump Up > Connectors, select Connect, sign in with their Pump Up account, then ask again. If they have no account, they can sign up at https://pumpup.com.
+Before anything else, check that the Pump Up tools (pumpup_*) are available. If they are not, stop and tell the user to connect Pump Up in their assistant, sign in with their Pump Up account, then ask again. Give the steps for the assistant you are running in — in Claude: Customize > Plugins > Pump Up > Connectors, then Connect; elsewhere, the connector or app settings of the Pump Up plugin. If they have no account, they can sign up at https://pumpup.com.
 
 # Work the Pump Up inbox
 
