@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "Pump Up": {
-      "type": "http",
-      "url": "https://app.pumpup.com/mcp"
-    }
-  }
-}

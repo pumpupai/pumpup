@@ -12,7 +12,7 @@
 
 ---
 
-Pump Up runs repeatable business processes with an AI agent, and keeps a person in the loop for the parts that need one. A **playbook** describes the process; each case runs as a ticket on a shared board, where the agent records what it did, asks for missing information, and requests approval before anything consequential. Every action lands in an append-only history, so the team can verify a run and improve the process from the record.
+Pump Up runs repeatable business processes with an AI agent, and keeps a person in the loop for the parts that need one. An **agent** describes the process; each case runs as a ticket on a shared board, where the hosted agent records what it did, asks for missing information, and requests approval before anything consequential. Every action lands in an append-only history, so the team can verify a run and improve the process from the record.
 
 > [!NOTE]
 > This repo is a **read-only mirror**. The code is authored in an upstream monorepo and synced here automatically — so the history you see is squashed sync commits, not the real development log. See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get involved (spoiler: Issues and Discussions, not PRs).
