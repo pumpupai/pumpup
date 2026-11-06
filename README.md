@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) [![GitHub stars](https://img.shields.io/github/stars/pumpupai/pumpup?logo=github&logoColor=white&label=stars)](https://github.com/pumpupai/pumpup/stargazers)
 
-[Docs](https://docs.pumpup.com) · [Website](https://pumpup.com) · [Discussions](https://github.com/pumpupai/pumpup/discussions) · [Issues](https://github.com/pumpupai/pumpup/issues)
+[Docs](https://help.pumpup.com) · [Website](https://pumpup.com) · [Discussions](https://github.com/pumpupai/pumpup/discussions) · [Issues](https://github.com/pumpupai/pumpup/issues)
 
 </div>
 
